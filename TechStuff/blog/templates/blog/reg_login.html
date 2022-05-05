@@ -1,0 +1,138 @@
+<script>
+    $("#btnSubmit").on('click', function(){
+        let username = $("#uname").val();
+        let pwd = $("#pwd").val();
+        let token = $("input[name='csrfmiddlewaretoken']").val();
+        let clientKey = grecaptcha.getResponse();
+
+        if(username == "")
+        {
+            Swal.fire('Username Can Not Be Empty');
+            return;
+        }
+
+        if(pwd == "")
+        {
+            Swal.fire('Password Can Not Be Empty');
+            return;
+        }
+
+        if(clientKey.length == 0)
+        {
+            Swal.fire('reCaptcha Should Be Checked');
+            return;
+        }
+
+        mydata = {
+            "username":username,
+            "pwd":pwd,
+            "csrfmiddlewaretoken":token,
+            "clientKey":clientKey
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "{% url 'Login' %}",
+            data: mydata,
+            dataType: "json",
+            success: function (response) {
+                if(response.status == true)
+                {
+                    location.href='/';
+                }
+                if(response.status == false)
+                {
+                    Swal.fire(
+					'Error',
+					response.msg,
+					'error'
+					)
+                }              
+                grecaptcha.reset();
+            }
+        });
+    })
+
+    $("#btnReg").on('click', function () {
+        let username = $("#uname").val();
+        let email = $("#email").val();
+        let pwd = $("#pwd").val();
+        let cpwd = $("#cpwd").val();
+        let token = $('input[name="csrfmiddlewaretoken"]').val();
+        let clientKey = grecaptcha.getResponse();
+
+        function ValidateEmail(mail) 
+        {
+            if (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(mail))
+            {
+                return (true)
+            }
+            return (false)
+        }
+
+        if(username == "")
+        {
+            Swal.fire('Username Can Not Be Empty');
+            return;
+        }
+        if(ValidateEmail(email) == false || email == "")
+        {
+            Swal.fire('Invalid Email Address');
+            return;
+        }
+        if(pwd == "" || cpwd == "")
+        {
+            Swal.fire('Password Field Can Not Be Empty');
+            return;
+        }
+
+        if(pwd != cpwd)
+        {
+            Swal.fire('Password Not Matched');
+            return;
+        }
+
+        if(clientKey.length == 0)
+        {
+            Swal.fire('reCaptcha Should Be Checked');
+            return;
+        }
+
+        mydata = {
+            "username":username,
+            "pwd":pwd,
+            "email":email,
+            "csrfmiddlewaretoken":token,
+            "clientKey":clientKey
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "{% url 'Register' %}",
+            data: mydata,
+            dataType: "json",
+            success: function (response) {
+                if(response.status == true)
+                {
+                    Swal.fire(
+					'Congratulations',
+					'Registration Successfull',
+					'success'
+					)
+
+                    setTimeout(function(){ location.href='/' }, 2000);
+                }
+
+                if(response.status == false)
+                {
+                    Swal.fire(
+					'Error',
+					response.errorMsg,
+					'error'
+					)
+                }
+                grecaptcha.reset();
+            }
+        });
+    });
+</script>

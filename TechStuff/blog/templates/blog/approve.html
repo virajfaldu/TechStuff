@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approve - TechStuff</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Custom Style   -->
+    <link rel="stylesheet" href="{% static 'css/approve.css' %}">
+
+    <!-- ---font style--- -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abel&family=Anton&family=Josefin+Sans&family=Lexend+Deca&family=Livvic&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mukta&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Proza+Libre:wght@600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container-permission">
+        <div class="permission-container">
+            <i class="fa fa-home" aria-hidden="true" onclick="window.location.href='/'" style="font-size: large; cursor: pointer;"></i>
+            <div class="center">
+                <div class="title">
+                    <h1>panding-posts</h1>
+                </div>
+            </div>
+            <div class="user-post">
+                {% if posts %}
+                {% for post in posts %}
+                {% if not post.approve %}
+                <div class="post">
+                    <div class="post-title">
+                        <p class="username">From : <a>{{post.post_by.username}}</a></p>
+                        <img src="/media/{{post.img}}" alt="img">
+                        <div class="padding">
+                            <a href="{% url 'show_post' title=post.title %}">{{post.title}}</a>
+                        </div>
+                        <h2>Time : <span>{{post.date}}</span></h2>
+                        <h2>Category : <span>{{post.category.name}}</span></h2>
+                    </div>
+                    <div class="post-info">
+                        <button class="button" onclick="location.href=`{% url 'show_post' title=post.title %}`">Read More &nbsp; <i class="fa fa-forward"
+                                aria-hidden="true"></i></button>
+                    </div>
+                    <div class="selection">
+                        <button onclick="location.href=`{% url 'action_post' act='apr' pid=post.id %}`">approve</button>
+                        <button id="deny" onclick="location.href=`{% url 'action_post' act='del' pid=post.id %}`">Deny</button>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% else %}
+                <div class="nopost">
+                    <img src="{% static 'img/nopost.png' %}" alt="">
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

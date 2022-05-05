@@ -1,0 +1,50 @@
+{% extends 'blog/basic.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Custom Style   -->
+<link rel="stylesheet" href="{% static 'css/search.css' %}">
+
+<!-- ---font style--- -->
+<link
+    href="https://fonts.googleapis.com/css2?family=Abel&family=Anton&family=Josefin+Sans&family=Lexend+Deca&family=Livvic&display=swap"
+    rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Mukta&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Proza+Libre:wght@600&display=swap" rel="stylesheet">
+{% endblock css %}
+
+{% block title %} Search Results - TechStuff {% endblock title %}
+
+{% block body %}
+<div class="container-search">
+    <div class="search-container">
+        <div class="center">
+            <div class="title">
+                <h1>Search Results</h1>
+            </div>
+        </div>
+        <div class="search-post">
+            {% if results %}
+            {% for result in results %}
+            <div class="post">
+                <div class="post-title">
+                    <img src="/media/{{result.img}}" alt="">
+                    <div class="padding">
+                        <a href="{% url 'show_post' title=result.title %}">{{result.title}}</a>
+                    </div>
+                    <h2>{{result.date}}</h2>
+                </div>
+                <div class="post-info">
+                    <button class="button" onclick="location.href=`{% url 'show_post' title=result.title %}`">Read More &nbsp; <i class="fa fa-forward" aria-hidden="true"></i></button>
+                </div>   
+            </div>
+            {% endfor %}
+            {% else %}
+                <h1>No Results Found...</h1>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock body %}

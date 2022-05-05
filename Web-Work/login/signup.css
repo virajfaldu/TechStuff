@@ -1,0 +1,278 @@
+* {
+    margin     : 0px;
+    padding    : 0px;
+    box-sizing : border-box;
+    user-select: none;
+}
+
+
+html {
+    font-size: 62.5%;
+}
+
+.container {
+
+    height            : 100vh;
+    width             : 100%;
+    display           : flex;
+    justify-content   : center;
+    align-items       : center;
+    background-image  : linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+    display           : grid;
+    grid-template-rows: 2;
+}
+
+.container .form {
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3),
+        6px 6px 10px 2px rgb(0, 0, 0, 0.3);
+    padding        : 15px;
+    background     : white;
+    border-radius  : 7px;
+    width          : 310px;
+    height         : 550px;
+    position       : relative;
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+}
+
+.container .form .title {
+    padding-top   : 2px;
+    text-align    : center;
+    color         : #369ccc;
+    text-transform: capitalize;
+    font-family   : 'Roboto Slab', serif;
+    font-size     : 3rem;
+    font-weight   : bolder;
+}
+
+.container .form .signup-form {
+    padding-top   : 20px;
+    padding-bottom: 14px;
+}
+
+.container .form .signup-form .inputBox {
+    position: relative;
+    z-index : 1;
+
+}
+
+.container .form .signup-form .inputBox i {
+    position : absolute;
+    top      : 16%;
+    left     : 5px;
+    color    : #064e70;
+    font-size: 2.6rem;
+}
+
+.container .form .signup-form .inputBox .fa-envelope {
+    font-size: 2.1rem;
+}
+
+.container .form .signup-form .inputBox input {
+    width        : 85%;
+    padding      : 10px 10px 4px 5px;
+    font-size    : 1.5rem;
+    font-weight  : bold;
+    color        : rgb(117, 114, 114);
+    margin-bottom: 30px;
+    border       : none;
+    outline      : none;
+    border-bottom: 1px solid black;
+    background   : transparent;
+    margin-left  : 35px;
+    z-index      : 3;
+
+}
+
+.container .form .signup-form .inputBox label {
+    position      : absolute;
+    top           : 0;
+    left          : 36px;
+    letter-spacing: 1px;
+    padding       : 10px 0;
+    font-size     : 1.6rem;
+    color         : rgb(90, 79, 79);
+    transition    : 0.5s;
+    z-index       : 1;
+    font-weight   : bold;
+    font-family   : 'Arvo', serif;
+    z-index       : -1;
+    text-transform: capitalize;
+}
+
+
+
+.container .form .signup-form .inputBox input:focus~label,
+.container .form .signup-form .inputBox input:valid~label {
+    top       : -22px;
+    left      : 38px;
+    transition: 0.5s;
+    color     : rgb(56, 53, 53);
+}
+
+
+.container .form .signup-form .signup-button {
+    text-transform: capitalize;
+    width         : 100%;
+    background    : rgb(17, 116, 155);
+    border        : none;
+    border-radius : 10px;
+    padding       : 5px;
+    font-size     : 16px;
+    outline       : none;
+}
+
+.container .form .signup-form .signup-button a {
+    text-decoration: none;
+    color          : #fff;
+    font-family    : 'Oxygen', sans-serif;
+}
+
+.container .form .signup-form .signup-button:hover {
+    background: rgb(29, 145, 190);
+    cursor    : pointer;
+}
+
+.container .form .signup-form .hr {
+    padding-top  : 30px;
+    border       : none;
+    border-bottom: 1px solid black;
+}
+
+.container .form .signup-form .or {
+
+    margin      : -8px auto 1px;
+    font-size   : 1.6rem;
+    background  : white;
+    width       : 25px;
+    padding-left: 3px;
+}
+
+.container .form .signup-form .links {
+
+    padding-top   : 20px;
+    word-spacing  : 3px;
+    text-transform: capitalize;
+}
+
+.container .form .signup-form .links .google .fa-google,
+.container .form .signup-form .links .facebook .fa-facebook {
+    word-spacing: 4px;
+    color       : white;
+    font-size   : 1.9rem;
+}
+
+.container .form .signup-form .links .google,
+.container .form .signup-form .links .facebook {
+    padding         : 8px 4px 4px 4px;
+    font-size       : 1.5rem;
+    border          : none;
+    background-color: rgb(5, 62, 85);
+    border-radius   : 4px;
+    text-decoration : none;
+    color           : white;
+}
+
+.container .form .signup-form .links .facebook {
+    background-color: #3a5794;
+}
+
+.form .captcha {
+    margin-top     : -10px;
+    margin-bottom  : 15px;
+    width          : 100%;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+}
+
+.form .captcha .g-recaptcha {
+
+    transform: scale(.9);
+    outline  : none;
+}
+
+@media (max-width:460px) {
+    html {
+        font-size: 55%;
+    }
+
+    .container .form {
+        width: 270px
+    }
+
+    .form .captcha .g-recaptcha {
+
+        transform: scale(.7);
+        outline  : none;
+    }
+
+}
+
+@media (max-width:390px) {
+    .container .form {
+        width : 250px;
+        height: 530px;
+    }
+
+    .form .captcha .g-recaptcha {
+
+        transform: scale(.8);
+        outline  : none;
+    }
+
+    .container .form .signup-form .signup-button {
+        margin-top   : -10px;
+        margin-bottom: -20px;
+    }
+
+}
+
+@media (max-width:320px) {
+    html {
+        font-size: 50%;
+    }
+
+    .container .form {
+        width : 220px;
+        height: 480px;
+    }
+
+    .container .form .signup-form .inputBox input {
+        margin-bottom: 20px;
+    }
+
+    .container .form .signup-form .signup-button {
+        margin-top: -10px;
+        padding   : 4px 0px;
+        font-size : 1.7rem;
+    }
+
+    .form .captcha .g-recaptcha {
+
+        transform: scale(.7);
+        outline  : none;
+    }
+}
+
+@media (max-width:290px) {
+    html {
+        font-size: 50%;
+    }
+
+    .container .form {
+        height: 490px;
+        width : 230px;
+    }
+
+    .container .form .signup-form .inputBox input {
+        width: 78%;
+    }
+
+    .container .form .signup-form .signup-button {
+        margin-top   : -10px;
+        margin-bottom: -20px;
+    }
+
+}

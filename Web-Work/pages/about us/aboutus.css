@@ -1,0 +1,128 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+html{
+    font-size: 62.5%;
+    background-color: rgb(238, 237, 237);
+}
+
+body{
+    width: 99vw;
+    height: 100vh;
+}
+.center {
+    margin: 50px 0px 50px 0px;
+    display: flex;
+    justify-content: center;
+}
+.title h1 {
+    width: 106%;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 4rem;
+    border-bottom: 1.5px dashed gray;
+    color: rgb(54, 54, 54);
+    text-transform: uppercase;
+    line-height: 40px;
+}
+.center .title h1::after {
+  content: "";
+  position: absolute;
+  margin-left: 2px;
+  margin-top: 38px;
+  height: 8px;
+  width: 8px;
+  border-radius: 100%;
+  background: rgb(102, 101, 101);
+}
+.center .title h1::before {
+  content: "";
+  position: absolute;
+  margin-left: -10px;
+  margin-top: 38px;
+  height: 8px;
+  width: 8px;
+  border-radius: 100%;
+  background: rgb(102, 101, 101);
+}
+.container{
+    padding: 0px 5%;
+    display: grid;
+    grid-template-columns: 100%;
+    row-gap: 5%;
+    justify-content: center;
+}
+.container .col{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container .info{
+    width: 55%;
+    text-align: justify;
+    margin-right: 2%;
+}
+.container .odd{
+    margin-left: 2%;
+    padding-right: 0%;
+}
+.container .info .name{
+    color: rgb(61, 61, 61);
+    font-size: 2.4rem;
+    font-family:'Roboto Slab', serif;
+    text-transform: capitalize;
+}
+.container .info .s-links{
+    margin-top: 10px;
+}
+.container .info .s-links a {
+  cursor: pointer;
+  margin-right: 5px;
+}
+.container .info .s-links img{
+    width: 25px;
+    height: 25px;
+}
+.container .info .s-links .fa-instagram {
+  color: white;
+  background: #0178d7;
+}
+.container .info .s-links .fa-github {
+  color: white;
+  background: black;
+}
+.container .info .work{
+    font-size: 1.4rem;
+    font-family:'Arvo', serif;
+    line-height: 20px;
+}
+.container .info .details{
+    margin-top: 15px;
+    color:rgb(58, 58, 58);
+    font-size: 1.7rem;
+    line-height: 20px;
+    width: 100%;
+}
+.container .col img{
+    width: 250px;
+    height: 200px;
+    border-radius: 2%;
+}
+
+@media (max-width:1140px){
+    .container{
+        padding: 0px 3%;
+    }
+}
+
+@media (max-width:840px){
+    .container .info{
+    width: 65%;
+    text-align: justify;
+    margin-right: 2%;
+    }
+}

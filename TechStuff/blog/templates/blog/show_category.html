@@ -1,0 +1,92 @@
+{% extends 'blog/basic.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/show_category.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Mukta&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Proza+Libre:wght@600&display=swap" rel="stylesheet">
+<link
+    href="https://fonts.googleapis.com/css2?family=Abel&family=Anton&family=Josefin+Sans&family=Lexend+Deca&family=Livvic&display=swap"
+    rel="stylesheet">
+{% endblock css %}
+
+{% block title %}
+{{cateName}}-Category || Tech Stuff
+{% endblock title %}
+
+{% block body %}
+
+<main>
+    <div class="outer-container">
+        <div class="inner-container">
+            <div class="section1">
+                <div class="carousal">
+                    <div class="owl-carousel owl-theme blog-post">
+
+                        {% for post in posts|slice:':3'%}
+                        <div class="blog-content">
+                            <div class="image-container">
+                                <img src="/media/{{post.img}}" alt="">
+                                <div class="img-text">
+                                    <h1>{{post.date}} <span>- {{post.post_by.username}}</span></h1>
+                                    <a href="{% url 'show_post' title=post.title %}">{{post.title}}</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                    <div class="owl-navigation">
+                        <span class="owl-nav-prev"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
+                        <span class="owl-nav-next"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+                    </div>
+                </div>
+                <!-- Carousel Ends -->
+                <div class="other-post-container">
+                    {% for post in posts|slice:'4:8' %}
+                    <div class="other-post">
+                        <div class="other-text">
+                            <div class="other-image">
+                                <img src="/media/{{post.img}}" alt="">
+                            </div>
+                            <div class="other-info">
+                                <h1>{{post.date}}<span>- {{post.post_by.username}}</span></h1>
+                                <a href="{% url 'show_post' title=post.title %}">{{post.title | slice:':50'}}</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="section2">
+                <div class="post-container">
+                    {% for post in posts|slice:'8:' %}
+                    <div class="post">
+                        <img src="/media/{{post.img}}" alt="">
+                        <div class="post-info">
+                            <h1>{{post.date}} <span>- {{post.post_by.username}}</span></h1>
+                            <a href="{% url 'show_post' title=post.title %}">{{post.title|slice:':50'}}</a>
+                        </div>
+                        <button class="read_more"><a href="{% url 'show_post' title=post.title %}">Discover <i class="fa fa-arrow-right"
+                                    aria-hidden="true"></i></a></button>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- <div class="pagination flex-row">
+                <a href="#"><i class="fa fa-chevron-left"></i></a>
+                <a href="#" class="pages">1</a>
+                <a href="#" class="pages">2</a>
+                <a href="#" class="pages">3</a>
+                <a href="#"><i class="fa fa-chevron-right"></i></a>
+            </div> -->
+        </div>
+    </div>
+</main>
+
+{% endblock body %}
+
+{% block js %}
+<script src="{% static 'js/show_category.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+{% endblock js %}

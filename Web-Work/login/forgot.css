@@ -1,0 +1,184 @@
+* {
+    margin     : 0px;
+    padding    : 0px;
+    box-sizing : border-box;
+    user-select: none;
+}
+
+body {
+    width: 100%;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+.container {
+    width           : 100vw;
+    height          : 100vh;
+    display         : flex;
+    background      : #000;
+    justify-content : center;
+    align-items     : center;
+    background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+}
+
+.container .form {
+    position: relative;
+    height  : 350px;
+    width   : 410px;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3),
+        6px 6px 10px 2px rgb(0, 0, 0, 0.3);
+    background     : white;
+    border-radius  : 7px;
+    padding        : 15px;
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+}
+
+
+.form .title {
+    padding-top   : 10px;
+    text-align    : center;
+    color         : #064e70;
+    text-transform: capitalize;
+    font-family   : 'Roboto Slab', serif;
+    font-size     : 3rem;
+}
+
+.forgot_form {
+
+    justify-content: center;
+    padding-top    : 30px;
+}
+
+.form .alertbox {
+    margin-top      : -15px;
+    margin-bottom   : 18px;
+    width           : 100%;
+    padding         : 20px 15px;
+    font-size       : 1.4rem;
+    color           : #721c24;
+    background-color: #f8d7da;
+    border-color    : #f5c6cb;
+    text-transform  : capitalize;
+    display         : none;
+}
+
+.form .successbox {
+    margin-top      : -15px;
+    margin-bottom   : 18px;
+    width           : 100%;
+    padding         : 20px 15px;
+    color           : #155724;
+    background-color: #d4edda;
+    border-color    : #c3e6cb;
+    font-size       : 1.4rem;
+    text-transform  : capitalize;
+    display         : none;
+}
+
+.forgot_form .inputBox {
+    position: relative;
+    z-index : 1;
+}
+
+.forgot_form .inputBox .fa {
+    position : absolute;
+    top      : 16%;
+    left     : 5px;
+    color    : #369ccc;
+    font-size: 26px;
+}
+
+.forgot_form .inputBox input {
+    width        : 85%;
+    padding      : 10px 10px 6px 5px;
+    font-size    : 1.6rem;
+    font-weight  : bold;
+    color        : rgb(95, 86, 86);
+    margin-bottom: 30px;
+    border       : none;
+    outline      : none;
+    border-bottom: 1px solid black;
+    background   : transparent;
+    margin-left  : 35px;
+    z-index      : 2;
+}
+
+.forgot_form .inputBox label {
+    position      : absolute;
+    top           : 0;
+    left          : 36px;
+    letter-spacing: 1px;
+    padding       : 10px 0px;
+    font-size     : 1.6rem;
+    color         : rgb(92, 87, 87);
+    transition    : 0.5s;
+    font-weight   : bold;
+    font-family   : 'Arvo', serif;
+    z-index       : -1;
+    text-transform: capitalize;
+}
+
+.forgot_form .inputBox input:focus~label,
+.forgot_form .inputBox input:valid~label {
+    top       : -24px;
+    left      : 37px;
+    transition: 0.5s;
+    color     : rgb(59, 56, 56);
+}
+
+
+
+.forgot_form .submit-button {
+    width         : 100%;
+    border        : none;
+    border-radius : 14px;
+    padding       : 7px;
+    background    : rgb(17, 116, 155);
+    outline       : none;
+    text-transform: capitalize;
+}
+
+
+.forgot_form .submit-button a {
+    font-size      : 15px;
+    color          : #fff;
+    text-decoration: none;
+    font-family    : 'Oxygen', sans-serif;
+    width          : 100%;
+}
+
+.forgot_form .submit-button:hover {
+    background: rgb(29, 145, 190);
+    cursor: pointer;
+}
+
+
+@media (max-width:410px) {
+    html {
+        font-size: 58%;
+    }
+
+    .container .form {
+        width: 260px;
+    }
+
+}
+
+@media (max-width:300px) {
+    html {
+        font-size: 57%;
+    }
+
+    .container .form {
+        width: 230px;
+    }
+
+    .forgot_form .inputBox input {
+        width: 78%;
+    }
+
+}

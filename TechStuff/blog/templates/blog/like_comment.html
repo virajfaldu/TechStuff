@@ -1,0 +1,198 @@
+<!-- JQuery For Likes And Ajax -->
+<script>
+	//Adding Likes
+	$("#lk" ).on("click", function(){
+		let ele = $(this);
+		let postTitle = $(".post-title h3").text();
+		let token = $("input[name='csrfmiddlewaretoken']").val();
+
+		console.log(token);
+
+		mydata = {
+			"title":postTitle,
+			"csrfmiddlewaretoken":token
+		}
+
+		$.ajax({
+			type: "POST",
+			url: "{% url 'like' %}",
+			data: mydata,
+			dataType: "json",
+			success: function (response) {
+				if(response.status == true)
+				{
+					$("#lk").css('display','none');
+					$("#dk").css('display','block');
+					$("#totalLk").text(response.totalLikes);
+				}
+
+				if(response.redirect == true)
+				{
+					window.location.href='/login';
+				}
+			}
+		});
+	});
+
+	//Removing Likes
+	$("#dk" ).on("click", function(){
+		ele = $(this);
+		let postTitle = $(".post-title h3").text();
+		let token = $("input[name='csrfmiddlewaretoken']").val();
+
+		mydata = {
+			"title":postTitle,
+			"csrfmiddlewaretoken":token
+		}
+
+		$.ajax({
+			type: "POST",
+			url: "{% url 'dis_like' %}",
+			data: mydata,
+			dataType: "json",
+			success: function (response) {
+				if(response.status == true)
+				{
+					$("#dk").css('display','none');
+					$("#lk").css('display','block');
+					$("#totalLk").text(response.totalLikes);
+				}
+
+				if(response.redirect == true)
+				{
+					window.location.href='/login';
+				}
+			}
+		});
+	});
+
+	//Doing Comments
+	$("#sendComment" ).on("click", function(){
+
+		element = ``
+
+		ele = $(this);
+		let postTitle = $(".post-title h3").text();
+		let token = $("input[name='csrfmiddlewaretoken']").val();
+		let desc = $("#commentDesc").val();
+
+		if(desc == "")
+		{
+			$("#commentDesc").css('border','1px solid red');
+			return;
+		}else{
+			$("#commentDesc").css('border','1px solid black');
+		}
+
+		mydata = {
+			"title":postTitle,
+			"csrfmiddlewaretoken":token,
+			"desc":desc
+		}
+
+		$.ajax({
+			type: "POST",
+			url: "{% url 'comment' %}",
+			data: mydata,
+			dataType: "json",
+			success: function (response) {
+				if(response.status == true)
+				{
+					x = response.allComment
+
+					element = `
+					<div class="actual-comment">
+                        <div class="text">
+                            <div class="username">
+                                <h4 style="text-transform: none;">${response.username}</h4>
+                            </div>
+                            <div class="time">${x[0].time}</div>
+                            <div class="comment">
+                                ${x[0].desc}
+                            </div>
+                        </div>
+                    </div>
+					`
+					$(".hr").after(element);
+					$("#totalCmt").text(response.cmtCount);
+				}
+
+				if(response.redirect == true)
+				{
+					window.location.href='/login';
+				}
+			}
+		});
+	});
+
+	//Adding Contact Details
+	$("#contactBtn" ).on("click", function(){
+		ele = $(this);
+		let email = $("#em").val();
+		let desc = $("#nm").val();
+		let token = $("input[name='csrfmiddlewaretoken']").val();
+
+		function ValidateEmail(mail) 
+        {
+            if (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(mail))
+            {
+                return (true)
+            }
+            return (false)
+        }
+
+		if(ValidateEmail(email) == false || email == "")
+		{
+			$("#em").css('border','1px solid red');
+			return;
+		}
+		else{
+			$("#em").css('border','none');
+		}
+
+		if(desc == "")
+		{
+			$("#nm").css('border','1px solid red');
+			return;
+		}
+		else{
+			$("#nm").css('border','none');
+		}
+
+		mydata = {
+			"email":email,
+			"desc":desc,
+			"csrfmiddlewaretoken":token
+		}
+
+		$.ajax({
+			type: "POST",
+			url: "{% url 'contact_us' %}",
+			data: mydata,
+			dataType: "json",
+			success: function (response) {
+				if(response.status == true)
+				{
+					Swal.fire(
+					'Contact Detail Submited',
+					'Administrator Will Contact You Soon',
+					'success'
+					)
+				}
+				else if(response.status == false)
+				{
+					Swal.fire(
+					'Something Went Wrong',
+					'Try After Some Time',
+					'error'
+					)
+				}
+				else if(response.redirect == true)
+				{
+					Swal.fire('You Must Be Logged In To Contact')
+				}
+			}
+		});
+	});
+
+</script>

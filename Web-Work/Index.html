@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- --------- Owl-Carousel ------------------->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css" />
+
+    <!-- ---------font style ------------------->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abel&family=Anton&family=Josefin+Sans&family=Lexend+Deca&family=Livvic&display=swap"
+        rel="stylesheet">
+
+    <!-- ------------ AOS Library ------------------------- -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" type='text/css'>
+
+    <!-- Custom Style   -->
+    <link rel="stylesheet" href="./css/Style.css">
+
+</head>
+
+<body>
+
+    <!-- ---------------------------- Naigation ---------------------------------------------- -->
+
+    <header>
+        <input type="checkbox" id="search">
+        <div class="logo">
+            <a href="#" class="logo-text">TechStuff</a>
+        </div>
+
+        <ul class="nav-items">
+            <li class="nav-links"><a href="/Index.html">Home</i></a></li>
+            <li class="nav-links"><a href="/pages/Add Post/add-post.html">Add Post</i></a></li>
+            <li class="nav-links"><a href="#">Contact</i></a></li>
+            <li class="nav-links"><a href="./pages/about us/aboutus.html">About Us</i></a></li>
+            <li class="nav-links"><a href="#">My Profile <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                <ul class="sub-nav-items">
+                    <li class="sub-nav-links"><a href="./login/signup.html">Sign Up</a></li>
+                    <li class="sub-nav-links"><a href="./login/login.html">Log In</a></li>
+                    <li class="sub-nav-links"><a href="#">Log Out</a></li>
+                    <li class="sub-nav-links"><a href="/pages/dashboard/dash.html">My Account</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <label for="search" class="searchicon">
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </label>
+        <label for="search" class="searchicon" id="close">
+            <i class="fa fa-close" aria-hidden="true"></i>
+        </label>
+
+        <form class="search-line" spellcheck="false">
+            <input type="text" placeholder="Search..." autofocus>
+        </form>
+
+        <div class="check-bar">
+            <i class="fa fa-bars"></i>
+        </div>
+    </header>
+
+    <!-- ------------x---------------  Navigation --------------------------x------------------- -->
+
+    <!----------------------------- Main Site Section ------------------------------>
+
+    <main>
+
+        <!------------------------ Site Title ---------------------->
+
+        <section class="site-title">
+            <div class="site-background" data-aos="fade-up" data-aos-delay="100">
+                <h3>Tours & Travels</h3>
+                <h1>Amazing Place on Earth</h1>
+                <button class="btn btn1" onclick="window.location.href='./login/signup.html'">Sign Now</button>
+            </div>
+        </section>
+
+        <!------------x----------- Site Title ----------x----------->
+
+        <!-- --------------------- Blog Carousel ----------------- -->
+
+        <section>
+            <div class="blog">
+                <div class="container">
+                    <h1 class="carousal-categories">Categories</h1>
+                    <div class="owl-carousel owl-theme blog-post">
+                        <div class="blog-content" data-aos="fade-right" data-aos-delay="200">
+                            <div class="img-container">
+                                <img src="./assets/Blog-post/blog1.png" alt="">
+                                <div class="img-text">
+                                    <h3>Technology</h3>
+                                    <a href="./pages/categories/cat_post.html" class="read">Explore</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="blog-content" data-aos="fade-right" data-aos-delay="200">
+                            <div class="img-container">
+                                <img src="./assets/Blog-post/blog2.png" alt="">
+                                <div class="img-text">
+                                    <h3>Computer</h3>
+                                    <a href="./pages/categories/cat_post.html" class="read">Explore</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="blog-content" data-aos="fade-right" data-aos-delay="200">
+                            <div class="img-container">
+                                <img src="./assets/Blog-post/blog3.png" alt="">
+                                <div class="img-text">
+                                    <h3>Python</h3>
+                                    <a href="./pages/categories/cat_post.html" class="read">Explore</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="blog-content" data-aos="fade-right" data-aos-delay="200">
+                            <div class="img-container">
+                                <img src="./assets/Blog-post/blog4.png" alt="">
+                                <div class="img-text">
+                                    <h3>Javascript</h3>
+                                    <a href="./pages/categories/cat_post.html" class="read">Explore</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="owl-navigation">
+                        <span class="owl-nav-prev"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
+                        <span class="owl-nav-next"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ----------x---------- Blog Carousel --------x-------- -->
+
+        <!-- ---------------------- Site Content -------------------------->
+
+        <section class="container">
+            <div class="site-content">
+                <div class="posts">
+                    <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="post-image">
+                            <div>
+                                <img src="./assets/Blog-post/blog1.png" class="img" alt="blog1">
+                            </div>
+                        </div>
+                        <div class="post-title">
+                            <a href="#">Why should boys have all the fun? it's the women who are making india an
+                                alcohol-loving contry</a><br><br>
+                            <button class="btn post-btn"
+                                onclick="window.location.href='./pages/main post/main-post.html'">Read More
+                                &nbsp; <i class="fa fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="post-image">
+                            <div>
+                                <img src="./assets/Blog-post/blog2.png" class="img" alt="blog1">
+                            </div>
+                        </div>
+                        <div class="post-title">
+                            <a href="#">Why should boys have all the fun? it's the women who are making india an
+                                alcohol-loving contry</a><br><br>
+                            <button class="btn post-btn"
+                                onclick="window.location.href='./pages/main post/main-post.html'">Read More
+                                &nbsp; <i class="fa fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="post-image">
+                            <div>
+                                <img src="/assets/Blog-post/blog3.png" class="img" alt="blog1">
+                            </div>
+                        </div>
+                        <div class="post-title">
+                            <a href="#">New data recording system to better analyse road accidents</a><br><br>
+                            <button class="btn post-btn"
+                                onclick="window.location.href='./pages/main post/main-post.html'">Read More
+                                &nbsp; <i class="fa fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                </div>
+                <aside class="sidebar">
+                    <div class="sub-post">
+                        <div class="popular-post">
+
+                            <h2>Popular Post</h2>
+                            <div class="post-content" data-aos="flip-up" data-aos-delay="200">
+                                <div class="post-image">
+                                    <div>
+                                        <img src="./assets/Blog-post/post-4.png" class="img" alt="blog1">
+                                    </div>
+                                    <div class="flex-row post-info">
+                                        <span><i class="fa fa-heart"></i>&nbsp;&nbsp;likes</span>
+                                    </div>
+                                </div>
+                                <div class="post-title">
+                                    <a href="#">New data recording system to better analyse road accidents</a>
+                                </div>
+                            </div>
+                            <div class="post-content" data-aos="flip-up" data-aos-delay="300">
+                                <div class="post-image">
+                                    <div>
+                                        <img src="./assets/Blog-post/post-3.jpg" class="img" alt="blog1">
+                                    </div>
+                                    <div class="flex-row post-info">
+                                        <span><i class="fa fa-heart"></i>&nbsp;&nbsp;likes</span>
+                                    </div>
+                                </div>
+                                <div class="post-title">
+                                    <a href="#">New data recording system to better analyse road accidents</a>
+                                </div>
+                            </div>
+                            <div class="post-content" data-aos="flip-up" data-aos-delay="400">
+                                <div class="post-image">
+                                    <div>
+                                        <img src="./assets/popular-post/m-blog-3.jpg" class="img" alt="blog1">
+                                    </div>
+                                    <div class="flex-row post-info">
+                                        <span><i class="fa fa-heart"></i>&nbsp;&nbsp;likes</span>
+                                    </div>
+                                </div>
+                                <div class="post-title">
+                                    <a href="#">New data recording system to better analyse road accidents</a>
+                                </div>
+                            </div>
+                            <div class="post-content" data-aos="flip-up" data-aos-delay="500">
+                                <div class="post-image">
+                                    <div>                                        
+                                        <img src="./assets/category/card-5.jpg" class="img" alt="blog1">
+                                    </div>
+                                    <div class="flex-row post-info">
+                                        <span><i class="fa fa-heart"></i>&nbsp;&nbsp;likes</span>
+                                    </div>
+                                </div>
+                                <div class="post-title">
+                                    <a href="#">New data recording system to better analyse road accidents</a>
+                                </div>
+                            </div>
+                            <div class="post-content" data-aos="flip-up" data-aos-delay="600">
+                                <div class="post-image">
+                                    <div>
+                                        <img src="./assets/Blog-post/post-2.jpg" class="img" alt="blog1">
+                                    </div>
+                                    <div class="flex-row post-info">
+                                        <span><i class="fa fa-heart"></i>&nbsp;&nbsp;likes</span>
+                                    </div>
+                                </div>
+                                <div class="post-title">
+                                    <a href="#">New data recording system to better analyse road accidents</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="popular-tags">
+                        <h2>Popular Tags</h2>
+                        <div class="flex-row tags">
+                            <span class="tag" data-aos="flip-up" data-aos-delay="100">Software</span>
+                            <span class="tag" data-aos="flip-up" data-aos-delay="200">technology</span>
+                            <span class="tag" data-aos="flip-up" data-aos-delay="300">travel</span>
+                            <span class="tag" data-aos="flip-up" data-aos-delay="400">illustration</span>
+                            <span class="tag" data-aos="flip-up" data-aos-delay="500">design</span>
+                            <span class="tag" data-aos="flip-up" data-aos-delay="600">lifestyle</span>
+                            <span class="tag" data-aos="flip-up" data-aos-delay="700">love</span>
+                            <span class="tag" data-aos="flip-up" data-aos-delay="800">project</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- -----------x---------- Site Content -------------x------------>
+
+    </main>
+
+    <!-- ------------------------ Pop up ------------------------ -->
+    <div class="card hide" id="box" style="transition: 2s;">
+        <h3 class="title">Do you want to part of<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp our family ?</h3>
+        <p class="line">we are sure,you will enjoy our services</p>
+        <div class="buttons">
+            <button id="tx"  onclick="myFunction()">No thanks</button>&nbsp;&nbsp;&nbsp;
+            <button onclick="window.location.href='./login/signup.html'">sign me up!</button>
+        </div>
+    </div>
+    <!---------------x------------- pop up ---------------x-------------->
+
+    <!---------------x------------- Main Site Section ---------------x-------------->
+    <!-- -------------------------- footer ------------------------------------ -->
+
+    <div class="footer-container">
+        <div class="column-container">
+            <div class="col-1">
+                <h3><span>Coding</span> World</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, illum! Quos veniam odio natus
+                    ullamanimi
+                    accusantium quas. Earum deserunt neque soluta voluptas, explicabo assumenda doloribus ducimus
+                    magnamnihil
+                    unde.
+                </p><br><br>
+                <div class="phone-email">
+                    <a class="fa fa-phone" aria-hidden="true" href="#"> 123-456-789</a><br>
+                    <a class="fa fa-envelope" aria-hidden="true" href="#"> teamtechstuff2020@gmail.com</a><br><br>
+                </div>
+                <div class="links">
+                    <a class="fa fa-facebook" aria-hidden="true" href="#"></a>
+                    <a class="fa fa-instagram" aria-hidden="true" href="#"></a>
+                    <a class="fa fa-youtube-play" aria-hidden="true" href="#"></a>
+                    <a class="fa fa-twitter" aria-hidden="true" href="#"></a>
+
+                </div>
+            </div>
+            <div class="col-2">
+                <h3><span>quick</span> links</h3>
+                <ul>
+                    <li><a href="#">home</a></li>
+                    <li><a href="#">about us</a></li>
+                    <li><a href="#">posts</a></li>
+                    <li><a href="#">add posts</a></li>
+                    <li><a href="#">terms and condition</a></li>
+                </ul>
+            </div>
+            <div class="col-3">
+                <h3><span>contact</span> us</h3>
+                <div class="input">
+                    <input type="text" placeholder="Your email address"><br>
+                    <textarea cols="28" rows="6" placeholder="message..."></textarea>
+                    <br>
+                    <button type="submit" class="submit">submit</button>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <i class="fa fa-copyright" aria-hidden="true"></i> copyright 2020-21
+        </div>
+        <div class="move-up">
+            <span><i class="fa fa-arrow-circle-up fa-2x"></i></span>
+        </div>
+    </div>
+
+    <!-- ----------X---------------- footer --------------X---------------------- -->
+
+    <!-- Jquery Library file -->
+    <script src="./js/Jquery3.4.1.min.js"></script>
+
+    <!-- --------- Owl-Carousel js ------------------->
+    <!-- <script src="./js/owl.carousel.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <!-- ------------ AOS js Library  ------------------------- -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Custom Javascript file -->
+    <script src="./js/main.js"></script>
+    <script src="./template/template.js"></script>
+</body>
+
+</html>

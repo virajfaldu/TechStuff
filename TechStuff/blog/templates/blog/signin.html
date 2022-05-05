@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp || Blogs</title>
+    <link rel="stylesheet" href="{% static 'css/signin.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Arvo&family=Piazzolla&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/sweetalert2.min.css' %}">
+
+    <!--------------------------------google captcha link-------------------------------->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="form">
+            <!-- <img src="avatar.svg" alt="" class="user-icon"> -->
+            <h2 class="title">Welcome</h2>
+            <div class="signup-form">
+                {% csrf_token %}                
+                  <div class="inputBox">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <input type="text" name="username" id="uname" autocomplete="off" required>
+                    <label>Username</label>
+                </div>
+                <div class="inputBox">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <input type="email" name="email" id="email" autocomplete="off" required>
+                    <label>Email Address</label>
+                </div>
+                <div class="inputBox">
+                    <!-- <i class="fa fa-key" aria-hidden="true"></i>
+                     -->
+                    <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                    <input type="password" name="password" id="pwd" autocomplete="off" required>
+                    <label>Password</label>
+                </div>
+                <div class="inputBox">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                    <input type="password" name="cpassword" id="cpwd" autocomplete="off" required>
+                    <label>Confirm Password</label>
+                </div>
+                <div class="captcha">
+                    <div class="g-recaptcha" data-sitekey="6LeEj-gZAAAAAO8dxTBQHkoxym1m2W9ecUzjmBVw"></div>
+                </div>
+                <button class="signup-button" type="submit" id="btnReg"><a >Sign up</a></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'js/sweetalert2.all.min.js' %}"></script>
+    {% include 'blog/reg_login.html' %}
+</body>
+
+</html>

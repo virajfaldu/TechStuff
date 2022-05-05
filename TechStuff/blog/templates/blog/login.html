@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login || Blogs</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Arvo&family=Piazzolla&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/sweetalert2.min.css' %}">
+
+        <!--------------------------------google captcha link-------------------------------->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<body>
+
+    <div class="container">
+        <div class="form">
+            <!-- <img src="avatar.svg" alt="" class="user-icon"> -->
+            <!-- <a href="/"><i class="fa fa-close" aria-hidden="true"></i></a> -->
+            <h2 class="title">Login Here</h2>
+            <div  class="login_form" >
+                {% csrf_token %}
+
+                <div class="inputBox">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <input type="text" name="username" id="uname" autocomplete="off" required>
+                    <label>Username</label>
+                </div>
+
+                <div class="inputBox">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                    <input type="password" name="password" id="pwd" autocomplete="off" required>
+                    <label>Password</label>
+                </div>
+                <div class="captcha">
+                    <div class="g-recaptcha" data-sitekey="6LeEj-gZAAAAAO8dxTBQHkoxym1m2W9ecUzjmBVw" id="key"></div>
+                </div>
+
+                <button class="login-button" type="submit" id="btnSubmit"><a >log in</a></button>
+                <div class="other">
+                    <a href="/signin">don't have an account ?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'js/sweetalert2.all.min.js' %}"></script>
+    {% include 'blog/reg_login.html' %}
+</body>
+
+</html>

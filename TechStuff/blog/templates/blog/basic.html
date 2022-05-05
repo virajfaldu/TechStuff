@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock title %}</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Custom Style   -->
+    <link rel="stylesheet" href="{% static 'css/basic.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sweetalert2.min.css' %}">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VXXRZJJC2X"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-VXXRZJJC2X');
+    </script>
+
+    {% block css %}
+    {% endblock css %}
+</head>
+
+<body>
+    <!-- ---------------------------- Navigation ---------------------------------------------- -->
+    <header>
+        
+        <input type="checkbox" id="search">
+        <div class="logo">
+            <a href="#" class="logo-text">TechStuff</a>
+        </div>
+        
+        <ul class="nav-items">
+            <li class="nav-links"><a href="{% url 'Home' %}">Home</i></a></li>
+            <li class="nav-links"><a href="{% url 'add_post' %}">Add Post</i></a></li>
+            <li class="nav-links"><a href="#contact">Contact</i></a></li>
+            <li class="nav-links"><a href="#contact">Help</i></a></li>
+            <li class="nav-links"><a href="#">My Profile <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                <ul class="sub-nav-items">
+                    {% if user.is_authenticated %}
+                    <li class="sub-nav-links"><a href="/logout">Log Out</a></li>
+                    <li class="sub-nav-links"><a href="/account">My Account</a></li>
+                    {% else %}
+                    <li class="sub-nav-links"><a href="{% url 'Register' %}">SignIn</a></li>
+                    <li class="sub-nav-links"><a href="{% url 'Login' %}">LogIn</a></li>
+                    {% endif %}
+                </ul>
+            </li>
+        </ul>
+     
+        <label for="search" class="searchicon">
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </label>
+        <label for="search" class="searchicon" id="close">
+            <i class="fa fa-close" aria-hidden="true"></i>
+        </label>
+        
+        <form  action="{% url 'Search' %}" class="search-line" spellcheck="false">
+            <input type="text" placeholder="Search Here..." name="query" autofocus>
+        </form>
+        
+        <div class="check-bar">
+            <i class="fa fa-bars"></i>
+        </div>
+    </header>
+
+
+    <!-- ------------x---------------  Navigation --------------------------x------------------- -->
+    {% block body %}
+
+    {% endblock body %}
+
+    <!-- -------------------------- footer ------------------------------------ -->
+
+
+    <div class="footer-container">
+        <div class="column-container">
+            <div class="col-1">
+                <h3><span>Tech</span> Stuff</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, illum! Quos veniam odio natus
+                    ullamanimi
+                    accusantium quas. Earum deserunt neque soluta voluptas, explicabo assumenda doloribus ducimus
+                    magnamnihil
+                    unde.
+                </p><br><br>
+                <div class="phone-email">
+                    <a class="fa fa-phone" aria-hidden="true" href="#"> 123-456-789</a><br>
+                    <a class="fa fa-envelope" aria-hidden="true" href="#"> teamtechstuff2020@gmail.com</a><br><br>
+                </div>
+                <div class="links">
+                    <a class="fa fa-facebook" aria-hidden="true" href="#"></a>
+                    <a class="fa fa-instagram" aria-hidden="true" href="#"></a>
+                    <a class="fa fa-youtube-play" aria-hidden="true" href="#"></a>
+                    <a class="fa fa-twitter" aria-hidden="true" href="#"></a>
+
+                </div>
+            </div>
+            <div class="col-2">
+                <h3><span>quick</span> links</h3>
+                <ul>
+                    <li><a href="{% url 'Home' %}">home</a></li>
+                    <li><a href="#cat">Categories</a></li>
+                    <li><a href="{% url 'add_post' %}">add posts</a></li>
+                    <li><a href="#">terms and condition</a></li>
+                </ul>
+            </div>
+            <div class="col-3">
+                <h3 id="contact"><span>contact</span> us</h3>
+                <div class="input" action="{% url 'contact_us' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="text" placeholder="Your email address" name="email" id="em" required=""><br>
+                    <textarea cols="28" rows="6" placeholder="message..." name="details" id="nm" required=""></textarea>
+                    <br>
+                    <button type="submit" class="submit" id="contactBtn">submit</button>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <i class="fa fa-copyright" aria-hidden="true"></i> copyright 2020-21 TechStuff
+        </div>
+        <div class="move-up">
+            <span><i class="fa fa-arrow-circle-up fa-2x"></i></span>
+        </div>
+    </div>
+    <!-- ----------X---------------- footer --------------X---------------------- -->
+
+    <!-- Jquery Library file -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Custom Javascript file -->
+    <script src="{% static 'js/basic.js' %}"></script>
+    <script src="{% static 'js/sweetalert2.all.min.js' %}"></script>
+    {% block js %}
+    {% endblock js %}
+    {% include 'blog/like_comment.html' %}
+</body>
+</html>

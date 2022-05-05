@@ -1,0 +1,161 @@
+{% extends 'blog/basic.html' %}
+{% load static %}
+{% block css %}
+
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Abel&family=Anton&family=Josefin+Sans&family=Lexend+Deca&family=Livvic&display=swap"
+    rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+{% endblock css %}
+
+{% block title %}
+Home || Tech Stuff
+{% endblock title %}
+
+{% block body %}
+
+<main>
+    <!------------------------ Site Title ---------------------->
+    <section class="site-title">
+        <div class="site-background" data-aos="fade-up" data-aos-delay="100">
+            <h3>Welcome to</h3>
+            <h1>Tech Stuff Blogs</h1>
+            {% if user.is_authenticated %}
+            <button class="btn btn1"><a href="#cat">Explore</a></button>
+            {% else %}
+            <button class="btn btn1"><a href="{% url 'Register' %}">Sign Now</a></button>
+            {% endif %}
+        </div>
+    </section>
+
+    <!------------x----------- Site Title ----------x----------->
+
+    <!-- --------------------- Blog Carousel ----------------- -->
+
+    <section>
+        <div class="blog" id="cat">
+            <div class="container">
+                <h1 class="carousal-categories">Categories</h1>
+                <div class="owl-carousel owl-theme blog-post">
+
+                    {% for cate in allCate %}
+
+                    <div class="blog-content" data-aos="fade-right" data-aos-delay="200">
+                        <div class="img-container">
+                            <img src="/media/{{cate.img}}" alt="">
+                            <div class="img-text">
+                                <h3>{{cate.name}}</h3>
+                                <a href="{% url 'show_cate' title=cate.name %}" class="read">Explore</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+                <div class="owl-navigation">
+                    <span class="owl-nav-prev"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
+                    <span class="owl-nav-next"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ----------x---------- Blog Carousel --------x-------- -->
+
+    <!-- ---------------------- Site Content -------------------------->
+
+    <section class="container">
+        <div class="site-content">
+            <div class="posts">
+
+                {% for post in allPost %}
+                {% if post.approve %}
+
+                <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="post-image">
+                        <div>
+                            <img src="/media/{{post.img}}" class="img" alt="blog1">
+                        </div>
+                    </div>
+                    <div class="post-title">
+                        <a href="{% url 'show_post' title=post.title %}">{{post.title}}</a><br><br>
+                        <button class="btn post-btn" onclick="window.location.href=`{% url 'show_post' title=post.title %}`">Read More &nbsp; <i class="fa fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                {% endif %}
+                {% endfor %}
+
+            </div>
+
+            <!-- Side Content -->
+            <aside class="sidebar">
+                <div class="sub-post">
+                    <div class="popular-post">
+
+                        <h2>Popular Posts</h2>
+
+                        {% for post in popularPost %}
+                        {% if post.approve %}
+
+                        <div class="post-content" data-aos="flip-up" data-aos-delay="200">
+                            <div class="post-image">
+                                <div>
+                                    <img src="/media/{{post.img}}" class="img" alt="blog1">
+                                </div>
+                                <div class="post-info flex-row">
+                                    <span><i class="fa fa-eye"></i>&nbsp;&nbsp;{{post.views}}</span>
+                                </div>
+                            </div>
+                            <div class="post-title">
+                                <a href="{% url 'show_post' title=post.title %}">{{post.title}}</a>
+                            </div>
+                        </div>
+
+                        {% endif %}
+                        {% endfor %}
+                </div>
+
+                <!-- Tags -->
+                <div class="popular-tags">
+                    <h2>Popular Tags</h2>
+                    <div class="tags flex-row">
+
+                        {% for cate in allCate %}
+                        <span class="tag" data-aos="flip-up" data-aos-delay="100" onclick="window.location.href=`{% url 'show_cate' title=cate.name %}`">{{cate.name}}</span>
+
+                        {% endfor %}
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <!-- -----------x---------- Site Content -------------x------------>
+
+</main>
+
+{% endblock body %}
+
+{% block js %}
+
+
+
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+
+<!-- ------------ AOS js Library  ------------------------- -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<!-- Custom Javascript file -->
+<script src="{% static 'js/main.js' %}"></script>
+
+{% endblock js %}

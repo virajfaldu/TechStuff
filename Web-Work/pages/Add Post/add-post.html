@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Post</title>
+
+    <!--------------------------------font-awesome-------------------------------->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!--------------------------------add-post css file-------------------------------->
+    <link rel="stylesheet" href="add-post.css">
+
+    <!--------------------------------font style link-------------------------------->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
+
+    <!--------------------------------google captcha link-------------------------------->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <script src="https://cdn.tiny.cloud/1/gi199ukktmqpn2k99hsqgw0rte9ovc8us1ng4s8mity91q79/tinymce/5/tinymce.min.js"
+        referrerpolicy="origin"></script>
+
+    <script>
+        tinymce.init({
+            selector: '#mytextarea'
+        });
+    </script>
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="shape-1"></div>
+        <div class="shape-2"></div>
+
+        <form class="addpost" spellcheck="false">
+            <div class="title">
+                <p>create your post</p>
+            </div>
+            <div class="success-alert">
+                <h3>your addpost added succeessfully</h3>
+            </div>
+            <div class="user-title">
+                <h3>title</h3>
+                <input type="text" class="form-control" required>
+            </div>
+            <div class="description">
+                <h3>description</h3>
+                <textarea cols="85" rows="7" id="mytextarea" required></textarea>
+            </div>
+            <div class="forflex">
+                <div>
+                    <div class="category">
+                        <h3>category&nbsp;&nbsp;</h3>
+                        <select>
+                            <option>category-1</option>
+                            <option>category-2</option>
+                            <option>category-3</option>
+                            <option>category-4</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="choose-file">
+                        <h3>select&nbsp;image</h3>
+                        <label class="file-button"><i class="fa fa-cloud-upload"></i> upload 
+                            <input type="file" accept="image/*" required>
+                        </label><i class="fa fa-check-circle" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="captcha">
+                    <div class="g-recaptcha" data-sitekey="your_site_key"></div>
+                </div>
+            </div>
+            <div class="submit">
+                <a href="#"><button type="submit">Submit</button></a>
+            </div>
+
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,252 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* colors */
+    --orange: #E74C3C;
+    --grey: #333333;
+    --white: #fff;
+
+    /* fonts */
+
+    --Abel: 'Abel', sans-serif;
+    --Montserrat: 'Montserrat', sans-serif;
+    --Oswald: 'Oswald', sans-serif;
+    --Roboto: 'Roboto', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    font-family: var(--Abel);
+}
+
+button {
+    border: 0;
+    outline: none;
+    cursor: pointer;
+}
+
+main {
+    padding: 30px 200px;
+    background: #d6d6d6;
+    display: grid;
+    grid-template-columns: 80% 20%;
+    grid-gap: 20px;
+}
+
+.container {
+    background: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    height: 90.5vh;
+}
+
+.profile_pic {
+    display: flex;
+    justify-content: flex-start;
+    height: 100%;
+    width: 100%;
+}
+
+.profile_pic .img_box {
+    display: grid;
+    place-items: center;
+    height: 140px;
+    width: 140px;
+    background: rgba(166, 168, 170);
+    border-radius: 3px;
+}
+
+.profile_pic .img_box h1 {
+    color: rgb(82, 82, 82);
+    font-size: 14px;
+}
+
+.profile_pic .pic_detail {
+    padding-left: 30px;
+}
+
+.profile_pic .pic_detail h1,
+h2 {
+    font-size: 25px;
+    font-family: var(--Roboto);
+    font-weight: bolder;
+}
+
+.profile_pic .pic_detail h2 {
+    font-size: 18px;
+    padding: 5px 0 10px 0;
+}
+
+.profile_pic .pic_detail button {
+    padding: 5px 10px;
+    background: #2c68d6;
+    border-radius: 3px;
+}
+
+.profile_pic .pic_detail button a {
+    color: #fff;
+    font-family: 'Arvo', serif;
+}
+
+.profile_pic .join_date {
+    margin-left: auto;
+    line-height: 35px;
+}
+
+.profile_pic .join_date h1 {
+    font-size: 18px;
+    color: #333;
+    font-weight: bolder;
+    padding: 10px 0;
+}
+
+.settings {
+    margin-top: 30px;
+}
+
+.settings>h1 {
+    margin: 10px 0;
+    color: #111;
+    font-family: var(--Roboto);
+    font-weight: bolder;
+}
+
+.settings form td h1 {
+    color: #414141;
+    font-size: 18.5px;
+    margin: 10px 0;
+}
+
+
+.settings form td input {
+    border: 1px solid #333333;
+    padding: 5px 10px;
+    width: 70%;
+    border-radius: 5px;
+}
+
+.settings form td input:focus {
+    outline-color: #0040b8bd;
+}
+
+.settings form td textarea {
+    min-height: 100px;
+    max-height: 100px;
+    min-width: 70%;
+    max-width: 70%;
+    margin: 10px 0;
+    padding: 5px 10px;
+}
+
+.settings form td textarea:focus {
+    outline-color: #0040b8bd;
+}
+
+.settings form td button {
+    padding: 5px 20px;
+    background: #2c68d6;
+    border-radius: 3px;
+    margin: 10px 0;
+}
+
+.settings form td button a {
+    color: #fff;
+    font-family: 'Arvo', serif;
+}
+
+
+
+
+aside .logout,
+.support {
+    padding: 10px 20px;
+    background: #fff;
+    border-radius: 5px;
+}
+
+aside .logout button {
+    width: 100%;
+    padding: 5px 10px;
+    background: #333;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+aside .logout button a {
+    color: #fff;
+    font-family: 'Arvo', serif;
+    font-weight: lighter;
+}
+
+aside .support {
+    margin-top: 20px;
+}
+
+aside .support h1 {
+    font-size: 20px;
+    font-family: 'Roboto Slab', serif;
+    color: rgb(68, 68, 68);
+}
+
+aside .support h2 {
+    font-family: 'Arvo', serif;
+    font-size: 16px;
+    font-weight: lighter;
+    padding: 10px 0;
+    color: #333;
+}
+
+aside .support button {
+    padding: 5px 10px;
+    background: #2c68d6;
+    border-radius: 3px;
+}
+
+aside .support button a {
+    color: #fff;
+    font-family: 'Arvo', serif;
+}
+
+@media only screen and (max-width : 900px) {
+    main {
+        grid-template-columns: 100%;
+        padding: 30px;
+    }
+
+    .profile_pic {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .profile_pic .pic_detail {
+        padding: 5px 0px;
+    }
+
+    .profile_pic .join_date {
+        margin: 5px 0;
+    }
+
+    .settings form td h1 {
+        font-size: 16px;
+    }
+
+    .settings form td textarea {
+        min-width: 70%;
+        max-width: 70%;
+    }
+
+    .settings form td input {
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width : 400px) {
+    main {
+        padding: 0;
+    }
+}

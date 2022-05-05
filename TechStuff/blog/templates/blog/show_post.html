@@ -1,0 +1,168 @@
+{% extends 'blog/basic.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/show_post.css' %}">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Goldman:wght@700&family=Merriweather:wght@700&display=swap"
+    rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
+<link
+    href="https://fonts.googleapis.com/css2?family=Abel&family=Anton&family=Josefin+Sans&family=Lexend+Deca&family=Livvic&display=swap"
+    rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Mukta&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Proza+Libre:wght@600&display=swap" rel="stylesheet">
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- ------------ AOS Library ------------------------- -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+{% endblock css %}
+
+{% block title %}
+{{post.title}}
+{% endblock title %}
+
+{% block body %}
+
+<div class="main-container">
+    <div class="post-title">
+        <h3>{{post.title}}</h3>
+    </div>
+
+
+    <div class="post-content">
+        <!-- --------------- main post --------------- -->
+        <div class="post-image" data-aos="flip-left" data-aos-delay="300" style="transition: 1.5s;">
+            <div>
+                <img src="/media/{{post.img}}" class="img" alt="blog1">
+            </div>
+            <div class="likes">
+                {% if isLike %}
+                <p ><i class="fa fa-heart" id="dk" aria-hidden="true" style="color: red;"></i></p>
+                <p ><i class="fa fa-heart" id="lk" aria-hidden="true" style="color: black; display: none;"></i></p>
+                {% else %}
+                <p ><i class="fa fa-heart" id="lk" aria-hidden="true" style="color: black;"></i></p>
+                <p ><i class="fa fa-heart" id="dk" aria-hidden="true" style="color: red; display: none;"></i></p>
+                {% endif %}
+                <p onclick="window.location.href='#comment'"><i class="fa fa-comment" aria-hidden="true"></i></p>
+                <i class="p">{{post.date}}</i>
+            </div>
+        </div>
+        <div class="post-description">
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{post.desc|safe}}
+        </div>
+
+        <!-- --------------- comments --------------- -->
+
+        <div class="comment-container" id="comment">
+            <div class="comment-box" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                <div class="comment-label">
+                    <p>Comment panel</p>
+                </div>
+                <div class="inner-class" spellcheck="false">
+                    <div >
+                        {% csrf_token %}
+                        <div class="textarea">
+                            {% if user.is_authenticated %}
+                            <textarea name="comment" id="commentDesc" cols="80" rows="6" placeholder="Write a comment" required></textarea>
+                            {% else %}
+                            <textarea name="comment" id="" cols="80" rows="6" placeholder="Write a comment. ( You must be logged in to make a comment. )" disabled></textarea>
+                            {% endif %}
+                            <input type="hidden" name="post_title" value="{{post.title}}">
+                        </div>
+                        <div class="send-button">
+                            {% if user.is_authenticated %}
+                            <button id="sendComment"><i class="fa fa-paper-plane" aria-hidden="true"></i>
+                            </button>
+                            {% else %}
+                            <button onclick="window.alert('You Must Logged In To Comment')" disabled><i class="fa fa-paper-plane" aria-hidden="true"></i>
+                            </button>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <hr class="hr">
+                    {% for comment in comments %}
+                    <div class="actual-comment">
+                        <div class="text">
+                            <div class="username">
+                                <h4 style="text-transform: none;">{{comment.comment_by.username}}</h4>
+                            </div>
+                            <div class="time">{{comment.time}}</div>
+                            <div class="comment">
+                                {{comment.desc}}
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- -----------------------------------------sidebar----------------------------------------- -->
+
+    <!-- -------------------- dash board ---------------------- -->
+
+    <div class="sidebar-container">
+        <div class="header">
+            <h3>Post archivements</h3>
+        </div>
+        <div class="dashboard" data-aos="zoom-in-down" data-aos-delay="350" style="transition: .5s;">
+            <div class="dashboard_links">
+                <div class="dashboard_title">
+                    <a href="#"><i class="fa fa-cog"> Post Status</i></a>
+                </div>
+                <div class="links">
+                    <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> Likes <span id="totalLk">{{total_likes}}</span></a>
+                    <a href="#"><i class="fa fa-comment" aria-hidden="true"></i> Comments <span id="totalCmt">{{total_comments}}</span></a>
+                    <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> views <span>{{post.views}}</span></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- -------------------- sidebar posts ---------------------- -->
+
+        <div class="mini-post">
+            <div class="header">
+                <h3>You might like this post</h3>
+            </div>
+            <div class="main">
+
+                {% for popPost in popularPost %}
+                {% if popPost.approve %}
+                <div class="post-info" data-aos="zoom-in" data-aos-delay="400" style="transition: .5s;">
+                    <div class="img-div">
+                        <img src="/media/{{popPost.img}}">
+                    </div>
+                    <div class="text" style="cursor: pointer;">
+                        <p onclick="window.location.href=`{% url 'show_post' title=popPost.title %}`">{{popPost.title |slice:":45"}}..</p>
+                    </div>
+                </div>
+                <hr>
+                {% endif %}
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
+
+{% block js %}
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+
+<!-- ------------ AOS js Library  ------------------------- -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<!-- Custom Javascript file -->
+<script src="{% static 'js/main.js' %}"></script>
+
+{% endblock js %}
+
+{% include 'blog/like_comment.html' %}

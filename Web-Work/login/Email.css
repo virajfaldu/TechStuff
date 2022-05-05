@@ -1,0 +1,179 @@
+* {
+    margin     : 0px;
+    padding    : 0px;
+    box-sizing : border-box;
+    user-select: none;
+}
+
+body {
+    width: 100%;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+.container {
+    width           : 100vw;
+    height          : 100vh;
+    display         : flex;
+    background      : #000;
+    justify-content : center;
+    align-items     : center;
+    background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+}
+
+.container .form {
+    position: relative;
+    height  : 290px;
+    width   : 330px;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3),
+        6px 6px 10px 2px rgb(0, 0, 0, 0.3);
+    background     : white;
+    border-radius  : 7px;
+    padding        : 25px;
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+}
+
+
+.form .title {
+    color         : #0a5a80;
+    text-transform: capitalize;
+    font-family   : 'Roboto Slab', serif;
+    font-size     : 1.9rem;
+}
+
+.confirm_form {
+
+    justify-content: center;
+    padding-top    : 20px;
+}
+
+.form .alertbox {
+    margin-top      : -15px;
+    margin-bottom   : 18px;
+    width           : 100%;
+    padding         : 20px 15px;
+    font-size       : 1.4rem;
+    color           : #721c24;
+    background-color: #f8d7da;
+    border-color    : #f5c6cb;
+    text-transform  : capitalize;
+    display         : none;
+}
+
+.form .successbox {
+    margin-top      : -15px;
+    margin-bottom   : 18px;
+    width           : 100%;
+    padding         : 20px 15px;
+    color           : #155724;
+    background-color: #d4edda;
+    border-color    : #c3e6cb;
+    font-size       : 1.4rem;
+    text-transform  : capitalize;
+    display         : none;
+}
+
+.confirm_form .notes {
+
+    color       : rgb(88, 85, 85);
+    font-size   : 1.6rem;
+    word-spacing: 1px;
+    line-height : 20px;
+    text-align  : justify;
+
+}
+
+.confirm_form .inputBox {
+    margin-top: 17px;
+}
+
+.confirm_form .inputBox label {
+    margin-bottom : 50px;
+    color         : rgb(88, 87, 87);
+    font-size     : 1.5rem;
+    font-family   : 'Oxygen', sans-serif;
+    text-transform: capitalize;
+}
+
+.confirm_form .inputBox input {
+    margin-top   : 6px;
+    margin-bottom: 15px;
+    border-radius: 3px;
+}
+
+.confirm_form .inputBox input[type="email"] {
+    width       : 100%;
+    height      : 35px;
+    border      : none;
+    border      : 1px solid rgba(0,40,100,.12);
+    outline     : none;
+    padding-left: 12px;
+}
+
+.confirm_form .inputBox input::placeholder {
+    color         : rgb(175, 174, 174);
+    text-transform: capitalize;
+    font-size     : 1.4rem;
+}
+
+.confirm_form .inputBox input:focus
+{
+    border-color: rgb(10, 150, 206);
+    box-shadow: 0px 0px 3px 1px rgb(118, 202, 235);
+}
+.confirm_form .submit-button {
+    
+    width         : 100%;
+    border        : none;
+    border-radius : 4px;
+    padding       : 7px;
+    background    : #467fcf;
+    outline       : none;
+    text-transform: capitalize;
+}
+
+
+.confirm_form .submit-button a {
+    font-size      : 1.5rem;
+    color          : #fff;
+    text-decoration: none;
+    font-family    : 'Oxygen', sans-serif;
+    width          : 100%;
+}
+
+.confirm_form .submit-button:hover {
+    background: #3271ca;
+    cursor    : pointer;
+}
+
+
+@media (max-width:410px) {
+    html {
+        font-size: 58%;
+    }
+
+    .container .form {
+        width: 260px;
+        height: 300px;
+    }
+
+}
+
+@media (max-width:300px) {
+    html {
+        font-size: 56%;
+    }
+
+    .container .form {
+        width: 230px;
+        height: 340px;
+    }
+
+    .confirm_form .inputBox input {
+        width: 78%;
+    }
+}

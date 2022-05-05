@@ -1,0 +1,178 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashbord || TechStuff</title>
+    <link rel="stylesheet" href="{% static 'css/dashbord.css' %}">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abel&family=Montserrat:wght@200&family=Oswald:wght@200&family=Roboto:wght@300&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abel&family=Anton&family=Josefin+Sans&family=Lexend+Deca&family=Livvic&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mukta&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Proza+Libre:wght@600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- ------------ AOS Library ------------------------- -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+    <!-- ---------------------- navigation --------------------- -->
+
+    <nav>
+        <div class="bars"><i class="fa fa-bars" aria-hidden="true"></i></div>
+        <div class="logo">
+            <a href="/">TachStuff</a>
+        </div>
+        <ul>
+            <li><a href="/account" class="active">Dashboard</a></li>
+            <li><a href="#userPosts">Posts</a></li>
+        </ul>
+        <div class="admin_info">
+            <a href="#">Welcome, <span>{{request.user.username}}</span></a>
+            <a href="/logout">Logout</a>
+        </div>
+    </nav>
+
+    <!-- ---------x------------- navigation ------------x--------- -->
+
+    <div class="header">
+        <div class="manage_heading">
+            <h1><i class="fa fa-cog" aria-hidden="true"></i> Dashboard </h1>
+            <button><a href="/add_post">Add Post <i class="fa fa-plus"></i></a></button>
+        </div>
+    </div>
+
+    <!-- -----------------main content -------------------------- -->
+
+    <main>
+        <div class="container">
+            <div class="website_overview">
+                <div class="web_info">
+                    <div class="overview_title">
+                        <h1>Content Overview</h1>
+                    </div>
+                    <div class="info" data-aos="fade-up" data-aos-anchor-placement="top-bottom"
+                        style="transition: .7s;">
+                        <div class="posts"><i class="fa fa-pencil" aria-hidden="true"></i> {{totalPosts}} <br> <span> Posts</span>
+                        </div>
+                        <div class="posts"><i class="fa fa-heart" aria-hidden="true"></i> {{totalLikes}} <br> <span>Likes</span>
+                        </div>
+                        <div class="posts"><i class="fa fa-comment" aria-hidden="true"></i> {{totalComments}} <br>
+                            <span>Comments</span>
+                        </div>
+                        <div class="posts"><i class="fa fa-bar-chart" aria-hidden="true"></i> {{totalViews}} <br>
+                            <span>Visitors</span>
+                        </div>
+                    </div>
+                    <!-- <div class="about">
+                        <div class="about_title">
+                            <h1>Profile</h1>
+                        </div>
+                        <div class="user_info" data-aos="fade-up" data-aos-anchor-placement="top-bottom"
+                            style="transition: 1s;">
+                            <div class="user_image">
+                                <div class="img"><img src="/media/{{userProfile.profile_pic}}" alt="" srcset=""></div>
+                                <h1>{{user.first_name}} {{user.last_name}}</h1>
+                                <h2>@{{user.username}}</h2>
+                            </div>
+                            <div class="user_data">
+                                <table id="user">
+                                    <tr>
+                                        <th>Name</th>
+                                        <td>{{user.first_name}} {{user.last_name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Email</th>
+                                        <td>{{user.email}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Profession</th>
+                                        <td>Student</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Country</th>
+                                        <td>India</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Joined</th>
+                                        <td>{{user.date_joined}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ---------x--------main content --------------x------------ -->
+
+    <!-- ------------------ user-posts --------------------------- -->
+    <div class="container-search">
+        <div class="search-container">
+            <div class="center">
+                <div class="title" id="posts">
+                    <h1 id="userPosts">YOUR POSTS</h1>
+                </div>
+            </div>
+            <div class="search-post">
+                {% if userPosts %}
+                {% for post in userPosts %}
+                <div class="post" data-aos="zoom-in" data-aos-delay="100" style="transition: 1s;">
+                    <div class="post-title">
+                        <img src="/media/{{post.img}}" alt="">
+                        <div class="padding">
+                            <a href="{% url 'show_post' title=post.title %}">{{post.title|slice:':50'}}</a>
+                        </div>
+                        <h2>{{post.date}}</h2>
+                    </div>
+                    <div class="post-info">
+                    <button class="button" onclick="window.location.href=`{% url 'show_post' title=post.title %}`">Read More &nbsp; <i class="fa fa-forward"
+                                aria-hidden="true"></i></button>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <div class="nopost">
+                    <img src="{% static 'img/nopost.png' %}" alt="">
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.bars').click(function () {
+                $('nav').toggleClass('show');
+            });
+        });
+    </script>
+
+
+
+    <!-- --------- Owl-Carousel js ------------------->
+    <!-- <script src="./js/owl.carousel.min.js"></script> -->
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+
+    <!-- ------------ AOS js Library  ------------------------- -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Custom Javascript file -->
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

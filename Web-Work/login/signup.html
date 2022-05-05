@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signup side</title>
+    <!-- ---------------------css file---------------------  -->
+    <link rel="stylesheet" href="signup.css">
+
+    <!-- ---------------------font links---------------------  -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Arvo&family=Piazzolla&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Arvo&family=BioRhyme&family=Piazzolla:wght@400;80000&family=Source+Serif+Pro:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- ---------------------font awesome link---------------------  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!--------------------------------google captcha link-------------------------------->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<body>
+
+    <div class="container">
+        <div class="form" spellcheck="false">
+            <!-- <img src="avatar.svg" alt="" class="user-icon"> -->
+            <h2 class="title">welcome</h2>
+            <form action="" class="signup-form">
+                <div class="inputBox">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <input type="text" name="username" autocomplete="off" required>
+                    <label>Username</label>
+                </div>
+                <div class="inputBox">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <input type="text" name="email" autocomplete="off" required>
+                    <label>Email Address</label>
+                </div>
+                <div class="inputBox">
+                    <!-- <i class="fa fa-key" aria-hidden="true"></i>
+                     -->
+                    <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                    <input type="password" name="password" autocomplete="off" required>
+                    <label>Password</label>
+                </div>
+                <div class="inputBox">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                    <input type="password" name="comfirm password" autocomplete="off" required>
+                    <label>Confirm Password</label>
+                </div>
+                <div class="captcha">
+                    <div class="g-recaptcha" data-sitekey="your_site_key"></div>
+                </div>
+                <button class="signup-button"><a href="signup.html">sign up</a></button>
+
+                <hr class="hr">
+                <p class="or">OR</p>
+
+                <div class="links">
+                    <center><a href="" class="google"><i class="fa fa-google" aria-hidden="true"></i> google</a>
+                        <a href="" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i> facebook</a>
+                    </center>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
